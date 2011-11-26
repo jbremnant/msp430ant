@@ -1,17 +1,22 @@
-[github.com]
-# first set up ssh public key
-http://help.github.com/linux-set-up-git/
+Author:      jbremnant
 
-git config --global user.name jbkim
-git config --global user.email jbremnant@gmail.com
-mkdir msp430ant
-cd msp430ant/
-git init
-touch README
-git add README
-git commit -m "first commit"
+Date:        2011 Nov 26
 
-git remote add gh_msp430ant git@github.com:jbremnant/msp430ant.git
-git remote add gc_msp430ant http://code.google.com/p/msp430ant
-git push -u -f gh_msp430ant master
-git remote rm github
+Disclaimer:  Much of the code included in this project have been written
+             by other developers who has worked on solving specific problems
+             in their own projects. The source code I've used from other
+             projects are left mostly in their entirety, and the credit
+             is due where necessary. My value-add in this project was to
+             combine these components to interact with eachother.
+
+[directories]
+
+android    contains the modified version of antplus demo android app.
+
+docs       relevant pdf's to help replicating the project.
+
+fw         msp430 firmware source code.
+
+tools      contains both python and c code (written by other folks)
+           that communicates against ant+ dongle via usb serial.
+
