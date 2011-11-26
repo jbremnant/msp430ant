@@ -1,3 +1,17 @@
-testing 
-testing
-git
+[github.com]
+# first set up ssh public key
+http://help.github.com/linux-set-up-git/
+
+git config --global user.name jbkim
+git config --global user.email jbremnant@gmail.com
+mkdir msp430ant
+cd msp430ant/
+git init
+touch README
+git add README
+git commit -m "first commit"
+
+git remote add gh_msp430ant git@github.com:jbremnant/msp430ant.git
+git remote add gc_msp430ant http://code.google.com/p/msp430ant
+git push -u -f gh_msp430ant master
+git remote rm github
