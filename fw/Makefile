@@ -35,6 +35,3 @@ upload: all
 
 uploadez: all
 	mspdebug -d /dev/ttyUSB0 uif "prog $(TARGET).elf"
-
-# msp430-gcc -Os -Wall -mmcu=msp430x2012 -o test.elf test.c
-# mspdebug rf2500 "prog test.elf"
