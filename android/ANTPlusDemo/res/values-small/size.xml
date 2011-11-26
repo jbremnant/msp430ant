@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="pad">7dp</dimen>
+    <dimen name="logo">60dp</dimen>
+    <dimen name="FontSize">16dp</dimen>
+    
+</resources>

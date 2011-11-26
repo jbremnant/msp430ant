@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="antlogo">90dp</dimen>
+    <dimen name="antpad">10dp</dimen>
+    <dimen name="pad">12dp</dimen>
+    <dimen name="logo">110dp</dimen>
+    
+</resources>

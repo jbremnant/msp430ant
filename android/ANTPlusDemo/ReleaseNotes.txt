@@ -1,0 +1,148 @@
+ANT Plus Demo - Release Notes
+v2.2
+2011-10-19
+
+=============================================================
+1. USAGE
+
+The 'ANT Radio Service' needs to be installed before any applications can use ANT.
+The ANTPlusDemo application provides a reference design for receiving broadcast data from a number of sensors.
+
+ANTLib is required by any ANT applications.  It is an Android Library project which should be referenced under Properties > Android > Library.
+
+An overview of creating ANT Android applications is provided in the "Creating ANT+ Android Applications" document.
+
+=============================================================
+2. REVISION HISTORY
+
+v2.2 / 020200 : Android_AntPlusDemo_2-2
+
+Bug
+
+    * [ANTDROID-271] - Status stuck as "Enabling ANT..." when application started and rotated quickly
+
+Code Task
+
+    * [ANTDROID-132] - Clean up use of Intent Filters
+    * [ANTDROID-269] - Remove Context from AntPlusManager constructor as Activity is already provided
+    * [ANTDROID-274] - Code cleanup from ANTDROID-271
+
+Improvement
+
+    * [ANTDROID-267] - Implement reference code for non-singleton AntInterface with init/stopService() changes
+
+--------------------------------------------------------------
+
+v2.1.1 / 020101 : 2011-07-21 : Android_AntPlusDemo_2-1-1
+
+* Improved in-line comments.
+* Update for Market icon.
+
+-------------------------------------------------------------
+
+v2.1 / 18 : 2011-07-13 : Android_AntPlusDemo_2-1
+
+* Fixed a bug introduced in v2.0 where devices with large deviceNumbers could only be connected to by pairing.
+* Fixed a bug where event buffering setting would be lost when opening a channel while all others where closed.
+* Fixed a bug introduced in v2.0 where attempting to configure certain sensor settings would cause a crash. 
+
+-------------------------------------------------------------
+
+v2.0 / 17 : 2011-07-06 : Android_AntPlusDemo_2-0
+
+* Ant specific code has been moved into it's own class (AntPlusManager).
+* Message handling is now done in a standard way.
+* All displayed strings moved to strings.xml.
+* Weight is now saved during screen changes.
+* Font size is now dependent on screen size.
+* Disconnected devices now prompt the user to click the channel icon.
+* Message handling has been improved. Messages are handled in a more standard way by switching on the message id first.
+  The message is then handled on the spot or dispatched to the proper handler.
+* Layout files are simplified, there are now 2 major layouts (portrait/landscape). All sizes are now defined under values(-large/small)/sizes.xml and will be loaded automatically depending on screen size.
+* When attempting to connect to the first device opening the channel is deferred to the ANT reset handler.
+* GUI code simplified: SensorPanel, MenuButton, and TextDisplay classes are removed.
+* All GUI code is now located in the updateDisplay() function.
+* Supports Acknowledge Messages receipt.
+* Removed decoding of Pulse-Oximeter as an HRM Page (use android_antplusdemo_FinalVersionWithPulseOximeter tag to get ANTPlusDemo version with PulseOximeter support)
+* Cleanup build warnings.
+
+-------------------------------------------------------------
+
+v1.2 / 16 : 2011-04-13 : Android_AntPlusDemo_1-2
+
+* Must call ANT enable as not all platforms will have ANT always enabled.  Do this when first connected to ANT Radio Service if we should be enabling.
+* Command line build updates for Library project, no Android build system Android.mk (use prebuilt apk if necessary).
+* Ignore AntServiceNotConnectedException in onDestroy.
+
+-------------------------------------------------------------
+
+v1.1.1 / 15 : 2011-03-29 : Android_AntPlusDemo_1-1-1
+
+* Reference ANTLib as Android Library project.
+
+-------------------------------------------------------------
+
+v1.1 / 14 : 2011-03-21 : Android_AntPlusDemo_1-1
+
+* Don't do ANT enable - leave at system setting (default is always on).
+* Fix bug where connection lost when rotate screen: Make sure ANTMessageReceiver is always registered while have control of the ANT Interface.
+* Add receiveAntRxMessages().
+* Handle that a request to claim the interface will set mClaimedAntInterface before we are in interface claimed Intent receiver.
+* Show "Enabling ANT..." if ANT Radio Service is being started (even though we don't do explicit enable any more).
+
+-------------------------------------------------------------
+
+v1.0.2 / 13 : 2011-03-09 : Android_AntPlusDemo_1-0-2
+
+* Keep "Enabling ANT..." status up until ANT_ENABLED is received. 
+
+-------------------------------------------------------------
+
+v1.0.1 / 12 : 2011-03-07 : Android_AntPlusDemo_1-0-1
+
+* Don't release ANT interface when put in to background as that now resets ANT (and cleaner to always have ANT configuration done when claiming interface).
+* Add (Javadoc) documentation.
+* Directly include ANTLib (v2.0.1) files, don't link to external directory.
+
+-------------------------------------------------------------
+
+v1.0 / 11 : 2011-02-12 : Android_AntPlusDemo_1-0
+
+* Don't use "Can't enable" dialog as status text does a better job.
+* Separate IntentFilter/BroadcastReceiver for ANT Status and ANT Message intents.
+* Handle claiming/releasing the ANT Interface. Only register for ANT_RX_MESSAGE_ACTION while the interface is claimed. Claim interface menu option.
+* Remove configuration of debug logging in service.
+* Add check for hasAntSupport(), and disable all functionality (including menu options) if not.
+* Rename landscape_grid.xml to main.xml.
+* Keep screen on when 'main' screen is shown.
+* Pair weight scale menu option.
+* New AntLib which requires handling Exceptions.
+* Don't treat logo at bottom of screen as a button.
+
+-------------------------------------------------------------
+
+See an older version for previous revision history.
+
+=============================================================
+3. VERSION CONTROL
+
+This release can be retrieved from the version control system with the tag:
+Android_AntPlusDemo_2-2
+
+It was created using:
+ANTLib:
+Android_AntLib_3-0
+
+=============================================================
+4. TODO
+
+    * [ANTDROID-268] - Simplify AntPlusManager design/interface
+    * [ANTDROID-270] - Increase text size of data
+    * [ANTDROID-244] - Seperate data and command paths
+
+=============================================================
+5. KNOWN ISSUES
+
+    * [ANTDROID-138] - ANT+ Logo "High Resolution Application Icon" does not display correctly on market (PC)
+    * [ANTDROID-260] - Status says "Enabling ANT..." when application started while Airplane mode is on
+    * [ANTDROID-261] - Request to enable ANT occurs without user interaction

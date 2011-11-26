@@ -1,0 +1,98 @@
+ANT Radio Library - Release Notes
+v3.0
+2011-10-04
+
+=============================================================
+1. USAGE
+
+These library files should be used by any ANT Radio applications as the interface to ANT devices. 
+
+Applications communicate with the ANT chip using the functions defined in com.dsi.ant.AntInterface (after calling getInstance() to retrieve the singleton instance).  Constant definitions are in com.dsi.ant.AntMesg and AntDefine.
+
+Also note that only one ANT application is currently supported at a time, so you will need to claim the interface before any requests will succeed and listen for the ANT_INTERFACE_CLAIMED_ACTION intent to know if another application has taken control (through request force claim) of the ANT radio.
+
+=============================================================
+2. REVISION HISTORY
+
+v3.0 / 030000 : 2011-10-04
+
+* ANTDROID-20   FIX BUG: After AntInterface.destroy(), onServiceConnected() callback can still be called.
+* ANTDROID-183  FIX BUG: AntInterface.getInstance(): Only the initial request for an instance will have context and listener set to the requested objects. 
+* ANTDROID-187  Define Enabling and Disabling Intents.
+* Documentation/comment updates (ANTDROID-184, ANTDROID-185).
+
+-------------------------------------------------------------
+
+v2.2 / 11 : 2011-07-18
+
+* Link directly to the ANT Radio Service on Android Market, instead of doing a search.
+* goToMarket(Context, String) deprecated, as no need to specify a search string.
+* Fixed documentation for ANTSendBurstTransfer().
+
+-------------------------------------------------------------
+
+v2.1.2 / 10 : 2011-07-05
+
+* FindBugs and Warnings cleanup (from exported xml, not shown in Eclipse).
+
+-------------------------------------------------------------
+
+v2.1.1 / 9 : 2011-06-29
+
+* FindBugs and Warnings cleanup.
+
+-------------------------------------------------------------
+
+v2.1 / 8 : 2011-04-04
+
+* Set up as Android Library project.
+* Update default Market search text.
+
+-------------------------------------------------------------
+
+v2.0.1 / 7 : 2011-03-07
+
+* Remove all aidl files from ANTLib except current IAnt.
+* Always try to unbind from service in releaseService(), but catch the Exception if we weren't bound.
+
+-------------------------------------------------------------
+
+v2.0 / 6 : 2011-02-12
+
+* Claim/release interface functions and Intent.
+* Move ANT_LIBRARY_VERSION_ defines from AntDefine to Version.
+* Removed debug functions.
+* Added hasAntSupport().
+* Return exceptions from all AntInterface functions and change so return codes are now only for useful results.
+
+-------------------------------------------------------------
+
+v1.4 / 5 : 2010-12-15
+
+* Improve JavaDoc comments.
+* Include missing ANTSetChannelTxPower() in AntInterface.
+* Debug functions: Allow enable or disable debug logging in service and set/get how many ANT packets are combined in a burst request.
+* Add licensing file headers.
+
+-------------------------------------------------------------
+
+For previous revision history, check an older version.
+
+=============================================================
+3. VERSION CONTROL
+
+This release can be retrieved from the version control system with the tag:
+Android_AntLib_3-0
+
+=============================================================
+4. TODO
+
+* ANTDROID-120  Use callbacks for Rx messages (not Intents), so they are not broadcast to the whole system.
+* ANTDROID-139  Support Enabling and Disabling states (trigger from ANT Radio Service).
+* ANTDROID-171  Add support for multiple applications simultaneously.
+* ANTDROID-189  Have a single ACTION_STATE_CHANGED Intent (so developers can use same implementation as Bluetooth). 
+
+=============================================================
+5. KNOWN ISSUES
+
+* ANTDROID-181  Tx attempt during a burst will disrupt the burst 
