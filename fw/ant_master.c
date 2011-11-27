@@ -243,6 +243,7 @@ int main()
   int j,i;
   uint8_t needconfig, data;
   char c;
+  data = 0; // start with zero
 
   WDTCTL = WDTPW + WDTHOLD;          // Stop WDT
   BCSCTL1 = CALBC1_12MHZ;   
