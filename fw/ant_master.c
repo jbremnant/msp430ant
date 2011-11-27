@@ -325,6 +325,7 @@ int main()
       }
       else
       {
+        if(data>125) data = 0;
         sendHRM(data++);
         P1OUT ^= BIT6;  // toggle on and off to indicate we are in the main loop
         _delay_ms(100); // 100 msec is crucial here!
